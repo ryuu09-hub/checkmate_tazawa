@@ -27,52 +27,16 @@ def shutter():
 if __name__ == '__main__':
     # モデル+重みを読込み
     #self_model = load_model('MobileNet_auto_fine3_150_3.h5')
-    self_model = load_model('mobilenetv2.2.h5')
+    self_model = load_model('mobilenetv2_for_2class.h5')
 
     # 音声ファイル初期化
     pygame.mixer.init()
     pygame.mixer.music.load("Cash_Register-Beep01-1.mp3")
 
     # 正解ラベル
-    label =  ['fantagrape',
- 'aquarius-sbody',
- 'aquarius-peach',
- 'vitaminwater',
- 'georgia',
- 'realgold-whitemix',
- 'aquarius-keikouhosui',
- 'aquarius',
- 'coca-cola',
- 'orangina',
- 'irohas',
- 'realgold',
- 'kocha-kaden',
- 'karupisu',
- 'realgold-fruit',
- 'sukoyaka',
- 'aquarius-yellow',
- 'peach',
- 'ayataka']
+    label =  ['fantagrape','ayataka']
     # 商品価格
-    money = {'fantagrape':120,
- 'aquarius-sbody':120,
- 'aquarius-peach':120,
- 'vitaminwater':110,
- 'georgia':150,
- 'realgold-whitemix':120,
- 'aquarius-keikouhosui':120,
- 'aquarius':120,
- 'coca-cola':130,
- 'orangina':120,
- 'irohas':100,
- 'realgold':130,
- 'kocha-kaden':125,
- 'karupisu':120,
- 'realgold-fruit':130,
- 'sukoyaka':140,
- 'aquarius-yellow':120,
- 'peach':110,
- 'ayataka':135}
+    money = {'fantagrape':120,'ayataka':135}
     
     #初期メモリ確保
     temp_photo='0.jpg'
@@ -84,19 +48,20 @@ if __name__ == '__main__':
     #最初の推定（時短）
     img_pred = self_model.predict(img_array)
 
+
     while True:
         money_sum = 0
         key = input('商品をスキャンする場合は「Enter」を押して下さい')
         while True:
             # 画像の取得
             shutter()
-
+            
             # 音声再生
             pygame.mixer.music.play(1)
             sleep(1)
             # 再生の終了
             pygame.mixer.music.stop()
-
+            
             # 画像をモデルの入力用に加工
             img = Image.open(photo_filename)
             #img = Image.open("./0.jpg")
@@ -132,3 +97,4 @@ if __name__ == '__main__':
             elif key != 'y':
                 print("合計:{}円".format(money_sum))
                 break
+
