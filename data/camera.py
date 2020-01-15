@@ -5,9 +5,10 @@ photo_filename = 'data_pi'
 
 # pi camera 用のライブラリーを使用して、画像を取得
 while True:
-    key = input("商品名選択,いちご「i」,オランジーナ「o」,ファンタ「f」,カルピス「k」,もも「m」,VitaminWater「v」,あやたか「a」")
-    drink ={"i":"ichigo","o":"orangena","f":"fantagrape","c":"calpis","m":"momo","v":"VitaminWater","a":"ayataka"}
-    for i in range(3):#20枚撮影
+    key = input("商品名選択,いちご「i」,オランジーナ「o」,ファンタ「f」,カルピス「k」,もも「m」,VitaminWater「v」,あやたか「g」,ペプシコーラ「p」,amino「a」")
+    drink ={"i":"ichigo","o":"orangena","f":"fantagrape","c":"calpis","m":"momo","v":"VitaminWater",
+            "g":"ayataka","p":"pepsi","a":"amino_supli"}
+    for i in range(60):#20枚撮影
         with picamera.PiCamera() as camera:
             camera.resolution = (300,400)
             camera.start_preview()
