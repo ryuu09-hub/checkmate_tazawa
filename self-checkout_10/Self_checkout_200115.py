@@ -27,7 +27,7 @@ def shutter():
 if __name__ == '__main__':
     # モデル+重みを読込み
     #self_model = load_model('MobileNet_auto_fine3_150_3.h5')
-    self_model = load_model('mobilenetv2_raspi.h5')
+    self_model = load_model('mobilenetv2_vgg.h5')
 
     # 音声ファイル初期化
     pygame.mixer.init()
@@ -97,7 +97,7 @@ if __name__ == '__main__':
             img_pred = self_model.predict(img_array)
             process_time=time.time() - start
             print('処理時間：{:.3f}秒'.format(process_time))
-            if process_time >=2.0:
+            if process_time >=10.0:
                 print('処理時間がかかり過ぎます。')
                 continue
             print("debug:",img_pred)
