@@ -27,16 +27,37 @@ def shutter():
 if __name__ == '__main__':
     # モデル+重みを読込み
     #self_model = load_model('MobileNet_auto_fine3_150_3.h5')
-    self_model = load_model('mobilenetv2_for_2class.h5')
+    self_model = load_model('mobilenetv2_raspi.h5')
 
     # 音声ファイル初期化
     pygame.mixer.init()
     pygame.mixer.music.load("Cash_Register-Beep01-1.mp3")
 
     # 正解ラベル
-    label =  ['fantagrape','ayataka']
+    label =  ['fantagrape',
+ 'calpis',
+ 'VitaminWater',
+ 'momo',
+ 'orangena',
+ 'ichigo',
+ 'ayataka',
+ 'water',
+ 'tea',
+ 'japanesetea',
+ 'orange']
+    
     # 商品価格
-    money = {'fantagrape':120,'ayataka':135}
+    money = {'fantagrape': 10,
+ 'calpis': 20,
+ 'VitaminWater': 30,
+ 'momo': 40,
+ 'orangena': 50,
+ 'ichigo': 60,
+ 'ayataka': 70,
+ 'water': 80,
+ 'tea': 90,
+ 'japanesetea': 100,
+ 'orange': 110}
     
     #初期メモリ確保
     temp_photo='0.jpg'
