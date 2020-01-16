@@ -15,7 +15,7 @@ while True:
             camera.resolution = (300,400)
             camera.start_preview()
             sleep(5)
-            camera.capture("{}/{}/image2_{}.jpg".format(photo_filename,drink[key],i))
+            camera.capture("{}/{}/image5_{}.jpg".format(photo_filename,drink[key],i))
             camera.stop_preview()
             
     if key == 'o':
